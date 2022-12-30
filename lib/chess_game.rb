@@ -31,9 +31,22 @@ class Game
 end
 
 class Board
+  attr_reader :grid
+
   def initialize(game_load)
     # board = load(game_load)
     puts "this is the board wahoo"
+    @grid = Array.new(8) { Array.new(8) }
+  end
+
+  def [](square)
+    row, column = square
+    matrix[row][column]
+  end
+
+  def []=(square, piece)
+    row, column = square
+    matrix[row][column] = piece
   end
 
   def load
@@ -60,6 +73,7 @@ end
 
 class Pieces
   include Moves
+
 
   # new piece stores current position (and past moves in linked list?)
 
@@ -101,7 +115,7 @@ end
 module Moves
 
   def knight(current)
-    
+
   end
 
   def king
